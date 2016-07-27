@@ -1,0 +1,48 @@
+<TrainingCenterDatabase xmlns="http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2 http://www.garmin.com/xmlschemas/TrainingCenterDatabasev2.xsd">
+    <Folders>
+        <Courses>
+            <CourseFolder Name="Courses">
+                <CourseNameRef>
+                    <Id>${segment.name[0..*15]}</Id>
+                </CourseNameRef>
+            </CourseFolder>
+        </Courses>
+    </Folders>
+
+    <Courses>
+        <Course>
+            <Name>${segment.name[0..*15]}</Name>
+            <Lap>
+                <TotalTimeSeconds>${segment.totalTime?c}</TotalTimeSeconds>
+                <DistanceMeters>${segment.totalDistance?c}</DistanceMeters>
+                <BeginPosition>
+                    <LatitudeDegrees>${segment.start.latitude?c}</LatitudeDegrees>
+                    <LongitudeDegrees>${segment.start.longitude?c}</LongitudeDegrees>
+                </BeginPosition>
+                <BeginAltitudeMeters>${segment.start.altitude?c}</BeginAltitudeMeters>
+                <EndPosition>
+                    <LatitudeDegrees>${segment.stop.latitude?c}</LatitudeDegrees>
+                    <LongitudeDegrees>${segment.stop.longitude?c}</LongitudeDegrees>
+                </EndPosition>
+                <EndAltitudeMeters>${segment.stop.altitude?c}</EndAltitudeMeters>
+                <Intensity>Active</Intensity>
+            </Lap>
+
+            <Track>
+                <!-- <#list segment.points as point> -->
+                <Trackpoint>
+                    <Time>${point.time}</Time>
+                    <Position>
+                        <LatitudeDegrees>${point.latitude?c}</LatitudeDegrees>
+                        <LongitudeDegrees>${point.longitude?c}</LongitudeDegrees>
+                    </Position>
+                    <AltitudeMeters>${point.altitude?c}</AltitudeMeters>
+                    <DistanceMeters>${point.distance?c}</DistanceMeters>
+                </Trackpoint>
+                <!-- </#list> -->
+            </Track>
+        </Course>
+    </Courses>
+</TrainingCenterDatabase>

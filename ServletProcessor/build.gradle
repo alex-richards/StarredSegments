@@ -1,0 +1,10 @@
+apply plugin: 'java'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'javax.servlet:javax.servlet-api:3.+'
+    compile 'org.freemarker:freemarker:2.3.25-incubating'
+}
